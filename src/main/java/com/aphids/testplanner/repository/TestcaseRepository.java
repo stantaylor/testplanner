@@ -6,4 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface TestcaseRepository extends JpaRepository<Testcase, Long> {
+
+    public Testcase findByName(String name);
 }
