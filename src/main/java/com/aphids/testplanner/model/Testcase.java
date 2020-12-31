@@ -11,7 +11,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-@Table(name="testcases")
+@Table(name = "testcases")
 @EntityListeners(AuditingEntityListener.class)
 @JsonIgnoreProperties(value = {"createdAt", "updatedAt"}, allowGetters = true)
 public class Testcase implements Serializable {
@@ -78,4 +78,3 @@ public class Testcase implements Serializable {
         this.updatedAt = updatedAt;
     }
 }
-

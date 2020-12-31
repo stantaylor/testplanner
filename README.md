@@ -1,8 +1,11 @@
 # testplanner
 Test management application
 
-Based on https://www.callicoder.com/spring-boot-rest-api-tutorial-with-mysql-jpa-hibernate/
+Based on
 
+* https://www.callicoder.com/spring-boot-rest-api-tutorial-with-mysql-jpa-hibernate/
+* https://spring.io/guides/gs/spring-boot/#initial
+* https://dzone.com/articles/spring-boot-with-spring-data-jpa
 
 # Curl commands
 
