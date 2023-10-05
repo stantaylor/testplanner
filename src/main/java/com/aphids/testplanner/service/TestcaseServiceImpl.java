@@ -1,11 +1,13 @@
 package com.aphids.testplanner.service;
 
+import com.aphids.testplanner.exception.ObjectNotFoundException;
 import com.aphids.testplanner.model.Testcase;
 import com.aphids.testplanner.repository.TestcaseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TestcaseServiceImpl implements TestcaseService {
@@ -20,7 +22,12 @@ public class TestcaseServiceImpl implements TestcaseService {
 
     @Override
     public Testcase getTestcase(Long testcaseId) {
-        return testcaseRepository.findById(testcaseId).get();
+
+        Optional<Testcase> testcase = testcaseRepository.findById(testcaseId);
+        if (testcase.isPresent()) {
+            return testcaseRepository.findById(testcaseId).get();
+        }
+        throw new ObjectNotFoundException("Testcase not found: " + testcaseId);
     }
 
     @Override
@@ -30,7 +37,12 @@ public class TestcaseServiceImpl implements TestcaseService {
 
     @Override
     public Testcase updateTestcase(Testcase testcase) {
-        return testcaseRepository.saveAndFlush(testcase);
+
+        Optional<Testcase> testcaseOptional = testcaseRepository.findById(testcase.getId());
+        if (testcaseOptional.isPresent()) {
+            return testcaseRepository.saveAndFlush(testcase);
+        }
+        throw new ObjectNotFoundException("Testcase not found: " + testcase.getId());
     }
 
     @Override

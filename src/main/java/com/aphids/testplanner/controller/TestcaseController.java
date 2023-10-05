@@ -1,5 +1,6 @@
 package com.aphids.testplanner.controller;
 
+import com.aphids.testplanner.exception.BusinessException;
 import com.aphids.testplanner.model.Testcase;
 import com.aphids.testplanner.service.TestcaseService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,7 @@ public class TestcaseController {
     }
 
     @GetMapping("testplanner/v1/testcases/{id}")
-    public Testcase getTestcase(@PathVariable String id){
+    public Testcase getTestcase(@PathVariable String id) {
         return testcaseService.getTestcase(Long.parseLong(id));
     }
 
@@ -30,7 +31,10 @@ public class TestcaseController {
     }
 
     @PutMapping("testplanner/v1/testcases/{id}")
-    public Testcase updateTestcase(@RequestBody Testcase testcase, @PathVariable String id){
+    public Testcase updateTestcase(@RequestBody Testcase testcase, @PathVariable String id) {
+        if (!id.equals(testcase.getId())) {
+            throw new BusinessException(("ID invalid"));
+        }
         return testcaseService.updateTestcase(testcase);
     }
 
