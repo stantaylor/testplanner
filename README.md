@@ -14,7 +14,7 @@ https://spring.io/guides/tutorials/rest/
     curl -v --request POST \
     --url http://localhost:8888/testplanner/v1/testcases/ \
     --header 'Content-Type: application/json' \
-    --data '{ "name": "Testcase 1"}'
+    --data '{ "name": "Testcase 6"}'
 
 ### Get a testcase (after creating one or more)
 
@@ -25,10 +25,10 @@ https://spring.io/guides/tutorials/rest/
     curl -v --request PUT \
     --url http://localhost:8888/testplanner/v1/testcases/1 \
     --header 'Content-Type: application/json' \
-    --data '{ "id": 1, "name": "Testcase 1 updated"}'
+    --data '{ "id": 4, "name": "Testcase 4 updated"}'
 
 ### Delete a testcase
-    curl -v --request DELETE http://localhost:8888/testplanner/v1/testcases/1
+    curl -v --request DELETE http://localhost:8888/testplanner/v1/testcases/100
 
 ### Get all testcases
 

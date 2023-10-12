@@ -47,10 +47,12 @@ public class TestcaseServiceImpl implements TestcaseService {
 
     @Override
     public void deleteTestcase(Long testcaseId) {
-
-        testcaseRepository.deleteById(testcaseId);
-
+        Optional<Testcase> testcaseOptional = testcaseRepository.findById(testcaseId);
+        if (testcaseOptional.isPresent()) {
+            testcaseRepository.deleteById(testcaseId);
+        } else {
+            throw new ObjectNotFoundException("Testcase not found: " + testcaseId);
+        }
     }
-
 
 }
